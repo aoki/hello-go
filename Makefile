@@ -28,3 +28,12 @@ bin/$(NAME): $(SRCS)
 install:
 	go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o ${GOPATH}/bin/$(NAME)
 	#go install $(LDFLAGS) -o hello
+
+.PHONY: imports
+imports:
+	# if you don't installed goimports
+	# `go get golang.org/x/tools/cmd/goimports`
+ifeq ($(shell command -v goimports 2> /dev/null),)
+	go get -u github.com/golang/dep/...
+endif
+	goimports -w *.go
