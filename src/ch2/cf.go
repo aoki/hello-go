@@ -1,3 +1,4 @@
+// +build ignore
 // cf convert Celsius into Fahrenheit
 package main
 
